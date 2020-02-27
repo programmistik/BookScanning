@@ -117,7 +117,7 @@ namespace BookScanning
             }
 
 
-            var libsAcs = libs.OrderBy(x => x.SignUp).ThenByDescending(x => x.Books.Sum(s => s.Score));
+            var libsAcs = libs.OrderBy(x => x.SignUp).ThenByDescending(x => x.Books.Count());
             //var libsAcs = libs.OrderByDescending(x => x.Books.Count()); // good on D
 
             foreach (var item in libsAcs)
@@ -152,7 +152,6 @@ namespace BookScanning
 
                 Result.Add(libRes);
             }
-          //  var libsArr = libs.ToArray();
 
             var newResult = new List<LibResult>(Result);
             Result = new List<LibResult>();
@@ -162,11 +161,6 @@ namespace BookScanning
                 if (item.Books.Count() > 0)
                 {
                     Result.Add(item);
-                    //var bookArr = item.Books.ToArray();
-                    //for (int j = 0; j < item.Books.Count(); j++)
-                    //{
-                    //    score = score + libsArr[item.id].Books.Where(x => x.id == bookArr[j]).FirstOrDefault().Score;
-                    //}
                 }
             }
 
